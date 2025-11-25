@@ -28,11 +28,15 @@ public class LoginUIController {
 
     @FXML
     void loginButtonOnAction(ActionEvent event) {
+
+/*      * Calls the parameterized constructor
+        * Creates a DTO object
+        * Sets username & password inside i*/
         UserCredentils userCredentils = new UserCredentils(
                 txtUsername.getText(),
                 txtPassword.getText()
         );
-
+/*        Passes the DTO to the service layer*/
         boolean isValidUser = loadingUIService.userRequest(userCredentils);
         if (isValidUser) {
             lblError.setVisible(false);

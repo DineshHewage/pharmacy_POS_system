@@ -3,5 +3,5 @@ package service;
 import model.dto.UserCredentils;
 
 public interface LoadingUIService {
-    boolean userRequest(UserCredentils userCredentils);
+    String userRequest(UserCredentils userCredentils);
 }

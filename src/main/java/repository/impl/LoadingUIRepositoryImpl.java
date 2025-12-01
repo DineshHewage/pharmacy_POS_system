@@ -7,12 +7,12 @@ import java.sql.*;
 
 public class LoadingUIRepositoryImpl implements LoadingUIRepository {
     @Override
-    public boolean userCredentialCheck(UserCredentils userCredentils) {
+    public String userCredentialCheck(UserCredentils userCredentils) {
 
         try {
             // Get a connection from the DBConnection singleton
             Connection connection = DBConnection.getInstance().getConnection();
-            String query = "SELECT userID FROM users WHERE username = ? AND password = ?";
+            String query = "SELECT firstName FROM users WHERE username = ? AND password = ?";
             // Prepare the SQL statement to prevent SQL Injection
             PreparedStatement pstm  = connection.prepareStatement(query);
             // Set values for the placeholders
@@ -23,11 +23,14 @@ public class LoadingUIRepositoryImpl implements LoadingUIRepository {
             // Execute the query; rs will contain matching rows (if any)
             ResultSet rs = pstm.executeQuery();
             // rs.next() returns true if at least one matching user exists
-            return rs.next();
+             if (rs.next()) {
+                 return rs.getString("firstName");
+             }
+             return null;
 
         } catch (SQLException e) {
             System.out.println("Error in userCredentialCheck: " + e.getMessage());
-            return false;
+            return null;
         }
     }
 }

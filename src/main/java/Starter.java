@@ -27,7 +27,7 @@ public class Starter extends Application {
 
         try {
             // Load the Login UI from FXML file
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/LoginUI.FXML.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/LoginUI.fxml"));
             // Load the root layout from the FXML file
             Parent root = fxmlLoader.load();
             primaryStage.setTitle("Aloka Pharmacy");
